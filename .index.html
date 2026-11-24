@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>إلى أبي حسن عون ❤️</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #050505;
+  color: white;
+  font-family: Tahoma, Arial, sans-serif;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+.screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+}
+
+#scanner {
+  transition: opacity 1s;
+}
+
+.eye {
+  width: 190px;
+  height: 125px;
+  border: 3px solid #d7b65b;
+  border-radius: 100% 0;
+  transform: rotate(45deg);
+  position: relative;
+  box-shadow: 0 0 25px #b58b36;
+  margin: 40px;
+  overflow: hidden;
+}
+
+.pupil {
+  position: absolute;
+  width: 65px;
+  height: 65px;
+  background: radial-gradient(circle, #000 25%, #9b782c 45%, #f1d17a 65%);
+  border-radius: 50%;
+  top: 27px;
+  left: 60px;
+  box-shadow: 0 0 20px #d9b45c;
+}
+
+.scanline {
+  position: absolute;
+  width: 220px;
+  height: 3px;
+  background: #ffe08a;
+  box-shadow: 0 0 20px #ffcf55;
+  left: -15px;
+  animation: scan 2s infinite alternate;
+}
+
+@keyframes scan {
+  from { top: 0; }
+  to { top: 125px; }
+}
+
+h1 {
+  color: #e7c36d;
+  font-size: 28px;
+}
+
+p {
+  line-height: 2;
+}
+
+#status {
+  color: #e7c36d;
+  margin-top: 15px;
+}
+
+button {
+  background: linear-gradient(135deg,#f2d27d,#9b762a);
+  border: none;
+  padding: 15px 35px;
+  border-radius: 30px;
+  color: #17120a;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+#letter {
+  display: none;
+  animation: appear 2s;
+}
+
+@keyframes appear {
+  from {opacity:0; transform:translateY(25px);}
+  to {opacity:1; transform:translateY(0);}
+}
+
+.card {
+  max-width: 650px;
+  width: 100%;
+  padding: 25px;
+  border: 1px solid #b99a4b;
+  border-radius: 20px;
+  background: linear-gradient(145deg,#171717,#090909);
+  box-shadow: 0 0 35px #8c6b2630;
+}
+
+#message {
+  font-size: 19px;
+  line-height: 2.2;
+  white-space: pre-line;
+  min-height: 300px;
+}
+
+.gold {
+  color: #e7c36d;
+}
+
+.stars {
+  position: fixed;
+  color: #d9b45c;
+  pointer-events: none;
+  animation: float 5s linear infinite;
+}
+
+@keyframes float {
+  from {transform:translateY(100vh);opacity:0;}
+  20% {opacity:1;}
+  to {transform:translateY(-20vh);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div id="scanner" class="screen">
+
+  <h1>أهلاً بك يا صاحب القلب الكبير</h1>
+  <p>فيه مفاجأة مخصوصة ليك ❤️</p>
+
+  <div class="eye">
+    <div class="pupil"></div>
+    <div class="scanline"></div>
+  </div>
+
+  <h3 class="gold">نظام التعرف على الهوية</h3>
+  <div id="status">جاري فحص العين...</div>
+
+  <p>من فضلك انتظر قليلاً</p>
+
+</div>
+
+<div id="letter" class="screen">
+
+  <div class="card">
+
+    <h1>إلى أبي الغالي</h1>
+    <h2 class="gold">حسن عون ❤️</h2>
+
+    <p id="message"></p>
+
+    <h2 class="gold" id="end"></h2>
+
+  </div>
+
+</div>
+
+<script>
+
+const statusText = document.getElementById("status");
+
+const message =
+`يا بابا، يمكن أنا مش بعرف أقولك الكلام ده كتير،
+ويمكن ساعات بقصر في إني أعبّرلك عن حبي ليك،
+بس عايزك تعرف إنك أغلى إنسان عندي.
+
+أنا عارف إنك تعبت كتير عشاني،
+وعارف إن في حاجات كتير عملتها وممكن أنا حتى ماخدتش بالي منها.
+
+بس صدقني أنا مقدّر كل حاجة،
+وفخور إنك أبويا.
+
+نفسي أشوفك دايماً مبسوط ومرتاح،
+وربنا يديم وجودك في حياتي ويديك الصحة والعافية،
+وأقدر في يوم من الأيام أفرح قلبك
+وأردلك ولو جزء صغير من تعبك عشاني.
+
+بحبك يا بابا حسن ❤️`;
+
+function createStars() {
+  for(let i=0;i<30;i++){
+    const star=document.createElement("div");
+    star.className="stars";
+    star.textContent="✦";
+    star.style.left=Math.random()*100+"%";
+    star.style.animationDelay=Math.random()*5+"s";
+    star.style.fontSize=(10+Math.random()*15)+"px";
+    document.body.appendChild(star);
+  }
+}
+
+function typeMessage(text, element, index=0) {
+  if(index < text.length) {
+    element.textContent += text[index];
+    setTimeout(() => typeMessage(text,element,index+1),45);
+  } else {
+    document.getElementById("end").textContent =
+      "ربنا يخليك ليا يا أغلى أب ❤️";
+  }
+}
+
+setTimeout(() => {
+  statusText.textContent = "تم التعرف على صاحب المفاجأة...";
+}, 2000);
+
+setTimeout(() => {
+  statusText.textContent = "مرحباً يا حسن عون ❤️";
+}, 3500);
+
+setTimeout(() => {
+  document.getElementById("scanner").style.display="none";
+  document.getElementById("letter").style.display="flex";
+  createStars();
+  typeMessage(message,document.getElementById("message"));
+}, 5000);
+
+</script>
+
+</body>
+</html>
